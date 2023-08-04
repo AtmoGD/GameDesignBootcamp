@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    public float health = 100f;
     public float speed = 5f;
     public float jumpForce = 5f;
     public int maxJumps = 2;
