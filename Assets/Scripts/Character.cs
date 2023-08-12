@@ -26,10 +26,12 @@ public class Character : MonoBehaviour
     [SerializeField] private Vector3 moveDirection = Vector3.zero;
     [SerializeField] private int jumps = 0;
     [SerializeField] private float lastJump = 0f;
-    [SerializeField] private int coins = 0;
 
     private bool IsDead { get { return health <= 0; } }
     private bool CanJump { get { return (Time.time - lastJump > jumpCooldown) && jumps < maxJumps; } }
+    public int Coins { get; private set; } = 0;
+    public float Health { get { return health; } }
+    public float MaxHealth { get { return maxHealth; } }
 
     private void Start()
     {
@@ -106,7 +108,7 @@ public class Character : MonoBehaviour
 
     public void AddCoin(int amount)
     {
-        coins += amount;
+        Coins += amount;
     }
 
     public void OnInteractPressed(InputAction.CallbackContext _callbackContext)

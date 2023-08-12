@@ -11,12 +11,17 @@ PrefabInstance:
     - target: {fileID: 6056161972509074438, guid: 8bf891fc855171a4da1b6fce68e85e85,
         type: 3}
       propertyPath: m_Name
-      value: Man Variant
+      value: Man
       objectReference: {fileID: 0}
     - target: {fileID: 6056161972509074438, guid: 8bf891fc855171a4da1b6fce68e85e85,
         type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6352695721402915651, guid: 8bf891fc855171a4da1b6fce68e85e85,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6863520564356693692, guid: 8bf891fc855171a4da1b6fce68e85e85,
         type: 3}
@@ -66,6 +71,11 @@ PrefabInstance:
     - target: {fileID: 6863520564356693692, guid: 8bf891fc855171a4da1b6fce68e85e85,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7553414699231290528, guid: 8bf891fc855171a4da1b6fce68e85e85,
+        type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
