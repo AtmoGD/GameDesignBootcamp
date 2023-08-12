@@ -9,6 +9,7 @@ public class Character : MonoBehaviour
     public float speed = 5f;
     public float jumpForce = 5f;
     public int maxJumps = 2;
+    public float jumpCooldown = 0.3f;
     public float gravityDelta = 0.1f;
     public float gravity = 20f;
     public float rotationSpeed = 5f;
@@ -19,8 +20,10 @@ public class Character : MonoBehaviour
     [SerializeField] private float health = 100f;
     [SerializeField] private Vector3 moveDirection = Vector3.zero;
     [SerializeField] private int jumps = 0;
+    [SerializeField] private float lastJump = 0f;
 
     private bool IsDead { get { return health <= 0; } }
+    private bool CanJump { get { return (Time.time - lastJump > jumpCooldown) && jumps < maxJumps; } }
 
     private void Start()
     {
@@ -55,7 +58,7 @@ public class Character : MonoBehaviour
 
     public void Jump()
     {
-        if (jumps < maxJumps && !IsDead)
+        if (CanJump && !IsDead)
         {
             moveDirection.y = jumpForce;
             jumps++;
