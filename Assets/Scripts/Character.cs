@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController), typeof(Animator))]
 public class Character : MonoBehaviour
 {
+    [Header("Character Settings")]
     public float maxHealth = 100f;
     public float speed = 5f;
     public float jumpForce = 5f;
@@ -14,9 +15,11 @@ public class Character : MonoBehaviour
     public float gravity = 20f;
     public float rotationSpeed = 5f;
 
+    [Header("References")]
     private CharacterController controller;
     private Animator animator;
 
+    [Header("Live Data (Don't Modify)")]
     [SerializeField] private float health = 100f;
     [SerializeField] private Vector3 moveDirection = Vector3.zero;
     [SerializeField] private int jumps = 0;
@@ -63,6 +66,7 @@ public class Character : MonoBehaviour
             moveDirection.y = jumpForce;
             jumps++;
             animator.SetTrigger("Jump");
+            lastJump = Time.time;
         }
     }
 
