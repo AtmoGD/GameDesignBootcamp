@@ -140,12 +140,15 @@ MonoBehaviour:
   speed: 0.05
   jumpForce: 0.05
   maxJumps: 2
+  jumpCooldown: 0.3
   gravityDelta: 0.1
   gravity: 9.81
   rotationSpeed: 5
+  interactRange: 2
   health: 100
   moveDirection: {x: 0, y: 0, z: 0}
   jumps: 0
+  lastJump: 0
 --- !u!114 &2719968439089996708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,6 +240,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 36ec6118-3b13-4123-8cb1-36ff4588f7de
     m_ActionName: Game/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3641489997332627327}
+        m_TargetAssemblyTypeName: Character, Assembly-CSharp
+        m_MethodName: OnInteractPressed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6cc82c22-6409-45f2-a82e-7c1aaa8a1124
+    m_ActionName: Game/Interact[/Keyboard/f]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Game

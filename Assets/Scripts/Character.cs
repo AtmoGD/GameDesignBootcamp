@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController), typeof(Animator))]
 public class Character : MonoBehaviour
@@ -14,6 +15,7 @@ public class Character : MonoBehaviour
     public float gravityDelta = 0.1f;
     public float gravity = 20f;
     public float rotationSpeed = 5f;
+    public float interactRange = 2f;
 
     [Header("References")]
     private CharacterController controller;
@@ -40,7 +42,7 @@ public class Character : MonoBehaviour
     {
         if (IsDead) return;
 
-        if (controller.isGrounded)
+        if (controller.isGrounded && moveDirection.y < 0)
             jumps = 0;
 
         moveDirection.y = Mathf.Clamp(moveDirection.y - (gravityDelta * Time.deltaTime), -gravity, float.MaxValue);
@@ -99,5 +101,32 @@ public class Character : MonoBehaviour
     {
         health = maxHealth;
         animator.SetTrigger("Revive");
+    }
+
+    public void OnInteractPressed(InputAction.CallbackContext _callbackContext)
+    {
+        if (_callbackContext.started)
+            Interact();
+    }
+
+    private void Interact()
+    {
+        Collider[] interactables = Physics.OverlapSphere(transform.position, interactRange);
+
+        foreach (Collider collider in interactables)
+        {
+            Interactable interactable = collider.GetComponent<Interactable>();
+
+            if (interactable != null)
+            {
+                interactable.Interact(this);
+                return;
+            }
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, interactRange);
     }
 }
