@@ -6,21 +6,21 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Character))]
 public class CharacterMovementController : MonoBehaviour
 {
-    Character character;
+    // Eine Variable für den Character erstellen
 
     private void Start()
     {
-        character = GetComponent<Character>();
+        // Eine Verbindung zum Character erstellen
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        character.Move(context.ReadValue<Vector2>());
+        // Character bewegen lassen
     }
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.started)
-            character.Jump();
+        // Checken ob der Bitten gerade gedrückt wurde
+        // Falls ja, den Character springen lassen
     }
 }
